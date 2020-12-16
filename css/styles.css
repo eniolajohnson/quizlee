@@ -1,0 +1,16 @@
+body{
+  font-family: "Montserrat", sans-serif;
+  font-size: large;
+}
+
+.container{
+  width: 80%;
+  margin: auto;
+  margin-top: 5%;
+  text-align: center;
+}
+
+input {
+  margin-top: 2%;
+  font-family: "Montserrat", sans-serif;
+}
