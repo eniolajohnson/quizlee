@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
   <title>AJAX Project</title>
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/layout.css">
@@ -17,12 +18,19 @@
     <div class="container">
       <h1>Welcome, o wise one!</h1>
       <h3>What shall we call you?</h3>
-      <div>
-        <input id="input-name" type="text" placeholder="Name goes here...">
-      </div>
-      <div>
-        <input id="submit-button" type="button" value="Enter">
-      </div>
+
+        <div>
+          <input id="input-name" type="text" placeholder="Name goes here...">
+        </div>
+        <div>
+          <input id="enter-button" type="submit" value="Enter">
+        </div>
+        <div>
+          <input class="hidden" id="start-button" type="submit" value="Start Now">
+        </div>
+        <div class="buttons">
+        </div>
+
     </div>
 
   </main>
