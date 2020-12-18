@@ -4,7 +4,9 @@ var $form = document.querySelector('#form');
 var $inputName = document.querySelector('#input-name');
 var $enterButton = document.querySelector('#enter-button');
 var $startButton = document.querySelector('#start-button');
-var $buttons = document.querySelector('.buttons');
+var $buttons = document.querySelectorAll('button');
+var $answerButtons = document.querySelector('.buttons');
+var $p = document.querySelector('p');
 
 function changeName(e) {
   if($inputName.value <= 0){
@@ -24,7 +26,7 @@ $enterButton.addEventListener('click', changeName);
 function startGame(e){
   var xhr = new XMLHttpRequest();
 
-  xhr.open('GET', 'https://opentdb.com/api.php?amount=10&difficulty=easy&type=multiple');
+  xhr.open('GET', 'https://opentdb.com/api.php?amount=1&difficulty=easy&type=multiple');
 
   xhr.responseType = 'json';
 
@@ -33,38 +35,45 @@ function startGame(e){
   var data = xhrResponse.results;
   var answers = [];
   var correctAnswer = '';
-  var score = 0;
 
     for (var i = 0; i < data.length; i++) {
-      // console.log(data[i].question);
-      $text.textContent = data[i].question;
-      $startButton.classList.add('hidden');
+      $text.innerHTML = data[i].question;
+      $startButton.value = 'Next';
       correctAnswer = data[i].correct_answer;
       answers = (data[i].incorrect_answers);
       answers.push(correctAnswer);
-      console.log(correctAnswer);
-      }
-
-    answers.sort();
-
-
-    for (answer in answers){
-      var $answerButton = document.createElement('button');
-      $answerButton.textContent = answers[answer];
-      $buttons.append($answerButton);
-      $answerButton.addEventListener("click", function(e){
-        if(e.target.textContent === correctAnswer){
-          e.target.style.backgroundColor = 'green';
-          score++;
-        } else {
-          e.target.style.backgroundColor = 'red';
-          var $p = document.createElement('p');
-          $p.textContent = `The correct answer was ${correctAnswer}.`
-          $buttons.append($p);
-        }
+      answers.sort();
+      $buttons[0].classList.remove('hidden');
+      $buttons[1].classList.remove('hidden');
+      $buttons[2].classList.remove('hidden');
+      $buttons[3].classList.remove('hidden');
+      $p.classList.remove('hidden');
+      $buttons[0].innerHTML = answers[0];
+      $buttons[1].innerHTML = answers[1];
+      $buttons[2].innerHTML = answers[2];
+      $buttons[3].innerHTML = answers[3];
+      $buttons.forEach(function(elem){
+        elem.addEventListener("click", function (e) {
+          if (e.target.textContent === correctAnswer) {
+            e.target.className = 'green';
+            $p.textContent = '';
+          } else if (e.target.textContent !== correctAnswer) {
+            e.target.className = 'red';
+            $p.textContent = `The correct answer was ${correctAnswer}.`;
+          }
+        })
       })
+      $p.textContent = '';
+      $buttons[0].className = 'gray';
+      $buttons[1].className = 'gray';
+      $buttons[2].className = 'gray';
+      $buttons[3].className = 'gray';
+
     }
-})
+
+
+  })
+
 
 xhr.send();
 }
@@ -72,9 +81,3 @@ xhr.send();
 
 
 $startButton.addEventListener('click', startGame);
-
-function quizQuestion(){
-  $text.textContent = data[i].question;
-  $username.textContent = '';
-  $inputName.style.display = 'none';
-}

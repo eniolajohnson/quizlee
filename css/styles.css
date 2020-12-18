@@ -28,8 +28,25 @@ button{
   margin: auto;
   margin-bottom: 1rem;
   height: 10vh;
+  border-style: none;
+}
+
+#start-button{
+  margin-top: 0;
 }
 
 .hidden{
   display: none;
+}
+
+.red {
+  background-color: red;
+}
+
+.green {
+  background-color: green;
+}
+
+.gray {
+  background-color: #c4c4c4;
 }
