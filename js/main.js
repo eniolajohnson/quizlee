@@ -58,6 +58,9 @@ function startGame(e){
           score++;
         } else {
           e.target.style.backgroundColor = 'red';
+          var $p = document.createElement('p');
+          $p.textContent = `The correct answer was ${correctAnswer}.`
+          $buttons.append($p);
         }
       })
     }
