@@ -2,4 +2,6 @@
 var userData = {
   username : "",
 }
-localStorage.setItem('userData', userData);
+
+var userDataJSON = JSON.stringify(userData)
+localStorage.setItem('userData', userDataJSON);

@@ -1,6 +1,8 @@
 body{
   font-family: "Montserrat", sans-serif;
   font-size: large;
+  background-image: url('./alien2.jpg');
+  color: white;
 }
 
 .container{
@@ -13,6 +15,9 @@ body{
 input {
   margin-top: 2%;
   font-family: "Montserrat", sans-serif;
+  border-radius: 4px;
+  padding: 0.4rem;
+  border-style: none;
 }
 
 .buttons{

@@ -23,12 +23,17 @@ function changeName(e) {
 
 $enterButton.addEventListener('click', changeName);
 
+var count = 11;
+var score = 0;
+
 function startGame(e){
   var xhr = new XMLHttpRequest();
 
   xhr.open('GET', 'https://opentdb.com/api.php?amount=1&difficulty=easy&type=multiple');
 
   xhr.responseType = 'json';
+
+  count--;
 
   xhr.addEventListener('load', function () {
   var xhrResponse = xhr.response;
@@ -43,32 +48,57 @@ function startGame(e){
       answers = (data[i].incorrect_answers);
       answers.push(correctAnswer);
       answers.sort();
-      $buttons[0].classList.remove('hidden');
-      $buttons[1].classList.remove('hidden');
-      $buttons[2].classList.remove('hidden');
-      $buttons[3].classList.remove('hidden');
+      // $buttons[0].classList.remove('hidden');
+      // $buttons[1].classList.remove('hidden');
+      // $buttons[2].classList.remove('hidden');
+      // $buttons[3].classList.remove('hidden');
+      $buttons.forEach(function (elem) {
+        elem.classList.remove('hidden');
+      })
       $p.classList.remove('hidden');
       $buttons[0].innerHTML = answers[0];
       $buttons[1].innerHTML = answers[1];
       $buttons[2].innerHTML = answers[2];
       $buttons[3].innerHTML = answers[3];
+      console.log(correctAnswer);
       $buttons.forEach(function(elem){
         elem.addEventListener("click", function (e) {
           if (e.target.textContent === correctAnswer) {
+            score++;
             e.target.className = 'green';
             $p.textContent = '';
           } else if (e.target.textContent !== correctAnswer) {
             e.target.className = 'red';
-            $p.textContent = `The correct answer was ${correctAnswer}.`;
+            $p.textContent = `The correct answer was: ${correctAnswer}.`;
           }
         })
       })
       $p.textContent = '';
-      $buttons[0].className = 'gray';
-      $buttons[1].className = 'gray';
-      $buttons[2].className = 'gray';
-      $buttons[3].className = 'gray';
+      // $buttons[0].className = 'gray';
+      // $buttons[1].className = 'gray';
+      // $buttons[2].className = 'gray';
+      // $buttons[3].className = 'gray';
+      $buttons.forEach(function (elem) {
+        elem.className ='gray';
+      })
 
+    }
+
+    if (count < 1){
+      $username.textContent = `Welldone, ${$inputName.value}!`;
+      $buttons.forEach(function(elem){
+        elem.classList.add('hidden');
+      })
+      $startButton.classList.add('hidden');
+      if (score < 5){
+        $text.textContent = `But you still need a course in Earthly 101.`
+      } else if (score > 5 && score < 7){
+        $text.textContent = `You've got a pretty good knowledge of Earthly things!`
+      } else {
+        $text.textContent = `We are in awe of your knowledge!`
+      }
+      var total = 10;
+      $p.textContent = `You got ${score} of ${total} correctly.`;
     }
 
 
