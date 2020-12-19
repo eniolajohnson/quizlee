@@ -48,10 +48,6 @@ function startGame(e){
       answers = (data[i].incorrect_answers);
       answers.push(correctAnswer);
       answers.sort();
-      // $buttons[0].classList.remove('hidden');
-      // $buttons[1].classList.remove('hidden');
-      // $buttons[2].classList.remove('hidden');
-      // $buttons[3].classList.remove('hidden');
       $buttons.forEach(function (elem) {
         elem.classList.remove('hidden');
       })
@@ -74,10 +70,6 @@ function startGame(e){
         })
       })
       $p.textContent = '';
-      // $buttons[0].className = 'gray';
-      // $buttons[1].className = 'gray';
-      // $buttons[2].className = 'gray';
-      // $buttons[3].className = 'gray';
       $buttons.forEach(function (elem) {
         elem.className ='gray';
       })
@@ -94,7 +86,7 @@ function startGame(e){
         $text.textContent = `But you still need a course in Earthly 101.`
       } else if (score > 5 && score < 7){
         $text.textContent = `You've got a pretty good knowledge of Earthly things!`
-      } else {
+      } else if (score > 7){
         $text.textContent = `We are in awe of your knowledge!`
       }
       var total = 10;
