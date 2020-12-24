@@ -1,7 +1,9 @@
 body{
   font-family: "Montserrat", sans-serif;
   font-size: large;
-  background-image: url('../image/cubes.jpg');
+  background-image: url('../image/stairs.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
   color: white;
 }
 
