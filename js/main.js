@@ -59,7 +59,7 @@ function startGame(e){
       $buttons[1].innerHTML = answers[1];
       $buttons[2].innerHTML = answers[2];
       $buttons[3].innerHTML = answers[3];
-      
+
       $buttons.forEach(function(elem){
         elem.addEventListener("click", function (e) {
           if (e.target.textContent === correctAnswer) {
@@ -97,7 +97,8 @@ function startGame(e){
       var total = 10;
       $p.textContent = `You got ${score} of ${total} correctly.`;
       var $restart = document.createElement('button');
-      $restart.className = 'button';
+      $score.className = 'hidden';
+      $restart.className = 'play-again';
       $restart.textContent = 'Play Again';
       $restart.addEventListener('click', function(){
         location.reload();
