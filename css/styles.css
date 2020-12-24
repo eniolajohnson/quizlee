@@ -7,13 +7,6 @@ body{
   color: white;
 }
 
-.container{
-  width: 80%;
-  margin: auto;
-  margin-top: 5%;
-  text-align: center;
-}
-
 input {
   margin-top: 2%;
   font-family: "Montserrat", sans-serif;
@@ -22,10 +15,6 @@ input {
   border-style: none;
 }
 
-.buttons{
-  width: 100%;
-  margin: auto;
-}
 button{
   width: 60%;
   display: block;
@@ -38,12 +27,29 @@ button{
   border-style: none;
 }
 
+.buttons{
+  width: 100%;
+  margin: auto;
+}
+
 #start-button{
   margin-top: 0;
 }
 
+.container{
+  width: 80%;
+  margin: auto;
+  margin-top: 5%;
+  text-align: center;
+}
+
 .hidden{
   display: none;
+}
+
+.score {
+  font-style: italic;
+  float: right;
 }
 
 .red {

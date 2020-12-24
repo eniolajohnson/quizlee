@@ -7,6 +7,7 @@ var $startButton = document.querySelector('#start-button');
 var $buttons = document.querySelectorAll('button');
 var $answerButtons = document.querySelector('.buttons');
 var $p = document.querySelector('p');
+var $score = document.querySelector('span');
 
 function changeName(e) {
   if($inputName.value <= 0){
@@ -69,6 +70,8 @@ function startGame(e){
           }
         })
       })
+      $score.className = 'score';
+      $score.textContent = `Score: ${score}`;
       $p.textContent = '';
       $buttons.forEach(function (elem) {
         elem.className ='gray';
