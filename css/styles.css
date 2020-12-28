@@ -17,6 +17,11 @@ input {
   border-style: none;
 }
 
+
+input[type="submit"]:hover{
+  cursor: pointer;
+}
+
 button{
   width: 60%;
   display: block;
@@ -27,6 +32,10 @@ button{
   margin-bottom: 1rem;
   height: 10vh;
   border-style: none;
+}
+
+button:hover{
+  cursor: pointer;
 }
 
 .play-again {
