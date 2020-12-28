@@ -42,12 +42,15 @@ function startGame(e){
   var xhrResponse = xhr.response;
   var data = xhrResponse.results;
   var answers = [];
-  var correctAnswer = '';
+  var unfilteredCorrectAnswer = '';
 
     for (var i = 0; i < data.length; i++) {
       $text.innerHTML = data[i].question;
       $startButton.value = 'Next';
-      correctAnswer = data[i].correct_answer;
+      unfilteredCorrectAnswer = data[i].correct_answer;
+      var filteredCorrectAnswer = document.createElement('p');
+      filteredCorrectAnswer.innerHTML = unfilteredCorrectAnswer;
+      var correctAnswer = filteredCorrectAnswer.textContent;
       answers = (data[i].incorrect_answers);
       answers.push(correctAnswer);
       answers.sort();
