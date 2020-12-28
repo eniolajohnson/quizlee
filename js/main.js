@@ -72,9 +72,15 @@ function startGame(e){
           } else if (e.target.textContent !== correctAnswer) {
             e.target.className = 'red';
             $p.textContent = `The correct answer was: ${correctAnswer}.`;
+          } else {
+            $p.textContent = `The correct answer was: ${correctAnswer}.`;
           }
         })
       })
+      if (e.target.value === "Next") {
+       console.log('e.target');
+      }
+}
       $score.className = 'score';
       $score.textContent = `Score: ${score}`;
       $p.textContent = '';

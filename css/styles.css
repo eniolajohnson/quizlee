@@ -1,8 +1,10 @@
 body{
   font-family: "Montserrat", sans-serif;
+  height: 100vh;
   font-size: large;
   background-image: url('../image/stairs.jpg');
   background-repeat: no-repeat;
+  background-position: center;
   background-size: cover;
   color: white;
 }
