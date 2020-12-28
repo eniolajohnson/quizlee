@@ -1,15 +1,10 @@
 body{
   font-family: "Montserrat", sans-serif;
   font-size: large;
-  background-image: url('../image/cubes.jpg');
+  background-image: url('../image/stairs.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
   color: white;
-}
-
-.container{
-  width: 80%;
-  margin: auto;
-  margin-top: 5%;
-  text-align: center;
 }
 
 input {
@@ -20,10 +15,6 @@ input {
   border-style: none;
 }
 
-.buttons{
-  width: 100%;
-  margin: auto;
-}
 button{
   width: 60%;
   display: block;
@@ -36,12 +27,42 @@ button{
   border-style: none;
 }
 
+.play-again {
+  width: 20%;
+  display: block;
+  font-weight: 800;
+  font-size: large;
+  font-family: "Montserrat", sans-serif;
+  text-align: center;
+  margin: auto;
+  margin-bottom: 1rem;
+  height: 10vh;
+  border-style: none;;
+}
+
+.buttons{
+  width: 100%;
+  margin: auto;
+}
+
 #start-button{
   margin-top: 0;
 }
 
+.container{
+  width: 80%;
+  margin: auto;
+  margin-top: 5%;
+  text-align: center;
+}
+
 .hidden{
   display: none;
+}
+
+.score {
+  font-style: italic;
+  float: right;
 }
 
 .red {

@@ -7,6 +7,9 @@ var $startButton = document.querySelector('#start-button');
 var $buttons = document.querySelectorAll('button');
 var $answerButtons = document.querySelector('.buttons');
 var $p = document.querySelector('p');
+var $score = document.querySelector('span');
+var $body = document.querySelector('div');
+
 
 function changeName(e) {
   if($inputName.value <= 0){
@@ -56,7 +59,7 @@ function startGame(e){
       $buttons[1].innerHTML = answers[1];
       $buttons[2].innerHTML = answers[2];
       $buttons[3].innerHTML = answers[3];
-      console.log(correctAnswer);
+
       $buttons.forEach(function(elem){
         elem.addEventListener("click", function (e) {
           if (e.target.textContent === correctAnswer) {
@@ -69,6 +72,8 @@ function startGame(e){
           }
         })
       })
+      $score.className = 'score';
+      $score.textContent = `Score: ${score}`;
       $p.textContent = '';
       $buttons.forEach(function (elem) {
         elem.className ='gray';
@@ -91,6 +96,15 @@ function startGame(e){
       }
       var total = 10;
       $p.textContent = `You got ${score} of ${total} correctly.`;
+      var $restart = document.createElement('button');
+      $score.className = 'hidden';
+      $restart.className = 'play-again';
+      $restart.textContent = 'Play Again';
+      $restart.addEventListener('click', function(){
+        location.reload();
+        return false;
+      });
+      $body.append($restart);
     }
 
 
