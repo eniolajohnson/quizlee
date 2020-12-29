@@ -1,10 +1,16 @@
 body{
   font-family: "Montserrat", sans-serif;
+  height: 100vh;
   font-size: large;
   background-image: url('../image/stairs.jpg');
   background-repeat: no-repeat;
+  background-position: center;
   background-size: cover;
   color: white;
+}
+
+.container{
+  margin: auto;
 }
 
 input {
@@ -13,6 +19,19 @@ input {
   border-radius: 4px;
   padding: 0.4rem;
   border-style: none;
+}
+
+.input {
+  margin-top: 2%;
+  font-family: "Montserrat", sans-serif;
+  border-radius: 4px;
+  padding: 0.4rem;
+  border-style: none;
+}
+
+
+input[type="submit"]:hover{
+  cursor: pointer;
 }
 
 button{
@@ -27,11 +46,15 @@ button{
   border-style: none;
 }
 
+button:hover{
+  cursor: pointer;
+}
+
 .play-again {
   width: 20%;
   display: block;
   font-weight: 800;
-  font-size: large;
+  font-size: 80%;
   font-family: "Montserrat", sans-serif;
   text-align: center;
   margin: auto;
