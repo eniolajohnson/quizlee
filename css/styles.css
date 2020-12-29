@@ -9,7 +9,19 @@ body{
   color: white;
 }
 
+.container{
+  margin: auto;
+}
+
 input {
+  margin-top: 2%;
+  font-family: "Montserrat", sans-serif;
+  border-radius: 4px;
+  padding: 0.4rem;
+  border-style: none;
+}
+
+.input {
   margin-top: 2%;
   font-family: "Montserrat", sans-serif;
   border-radius: 4px;
@@ -42,7 +54,7 @@ button:hover{
   width: 20%;
   display: block;
   font-weight: 800;
-  font-size: large;
+  font-size: 80%;
   font-family: "Montserrat", sans-serif;
   text-align: center;
   margin: auto;
