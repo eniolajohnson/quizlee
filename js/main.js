@@ -105,7 +105,7 @@ function startGame(e){
       $startButton.classList.add('hidden');
       if (score < 5){
         $text.textContent = `But you still need a course in Earthly 101.`
-      } else if (score > 5 && score < 7){
+      } else if (score > 4 && score < 7){
         $text.textContent = `You've got a pretty good knowledge of Earthly things!`
       } else if (score > 7){
         $text.textContent = `We are in awe of your knowledge!`
@@ -261,13 +261,13 @@ $restart.addEventListener('click', function(e) {
         input3.classList.add('hidden');
         if (scorer < 5) {
           h3.textContent = `But you still need a course in Earthly 101.`
-        } else if (scorer > 5 && score < 7) {
+        } else if (scorer > 4 && score < 7) {
           h3.textContent = `You've got a pretty good knowledge of Earthly things!`
         } else if (scorer > 7) {
           h3.textContent = `We are in awe of your knowledge!`
         }
         var total = 10;
-        p.textContent = `You got ${score} of ${total} correctly.`;
+        p.textContent = `You got ${scorer} of ${total} correctly.`;
         span.className = 'hidden';
         $main.append($restart);
       }
