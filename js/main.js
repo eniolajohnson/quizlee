@@ -11,7 +11,7 @@ const $score = document.querySelector('span');
 const $body = document.querySelector('div');
 const $main = document.querySelector('main');
 
-function changeName(e) {
+const changeName = (e) => {
   if($inputName.value <= 0){
     $username.textContent = `We need a name to play the game...`;
   } else {
@@ -32,7 +32,7 @@ const $restart = document.createElement('button');
 $restart.className = 'play-again';
 $restart.textContent = 'Play Again';
 
-function startGame(e){
+const startGame = (e) => {
   let xhr = new XMLHttpRequest();
 
   xhr.open('GET', 'https://opentdb.com/api.php?amount=1&difficulty=easy&type=multiple');
@@ -41,7 +41,7 @@ function startGame(e){
 
   count--;
 
-  xhr.addEventListener('load', function () {
+  xhr.addEventListener('load', () => {
   let xhrResponse = xhr.response;
   let data = xhrResponse.results;
   let answers = [];
@@ -57,7 +57,7 @@ function startGame(e){
       answers = (data[i].incorrect_answers);
       answers.push(correctAnswer);
       answers.sort();
-      $buttons.forEach(function (elem) {
+      $buttons.forEach((elem) => {
         elem.classList.remove('hidden');
       })
       $p.classList.remove('hidden');
@@ -66,15 +66,15 @@ function startGame(e){
       $buttons[2].innerHTML = answers[2];
       $buttons[3].innerHTML = answers[3];
 
-      e.target.addEventListener('click', function(e){
-        $buttons.forEach(function(elem) {
+      e.target.addEventListener('click', (e) => {
+        $buttons.forEach((elem) => {
           if (elem.textContent === correctAnswer){
             elem.className = 'green';
           }
         })
       })
-      $buttons.forEach(function(elem){
-        elem.addEventListener("click", function (e) {
+      $buttons.forEach((elem) => {
+        elem.addEventListener("click", (e) => {
           if (e.target.textContent === correctAnswer) {
             score++;
             e.target.className = 'green';
@@ -91,7 +91,7 @@ function startGame(e){
       $score.className = 'score';
       $score.textContent = `Score: ${score}`;
       $p.textContent = '';
-      $buttons.forEach(function (elem) {
+      $buttons.forEach((elem) => {
         elem.className ='gray';
       })
 
@@ -99,7 +99,7 @@ function startGame(e){
 
     if (count < 1){
       $username.textContent = `Welldone, ${$inputName.value}!`;
-      $buttons.forEach(function(elem){
+      $buttons.forEach((elem) => {
         elem.classList.add('hidden');
       })
       $startButton.classList.add('hidden');
@@ -123,7 +123,7 @@ xhr.send();
 let counter = 11;
 let scorer = 0;
 
-$restart.addEventListener('click', function(e) {
+$restart.addEventListener('click', (e) => {
   counter = 10;
   scorer = 0;
   while ($main.firstChild) {
@@ -182,7 +182,7 @@ $restart.addEventListener('click', function(e) {
   container.append(h1, span, h3, div1, div2, div3, div4);
   $main.append(container);
 
-  input3.addEventListener('click', function(e) {
+  input3.addEventListener('click', (e) => {
     const buttonArr = [];
 
     buttonArr.push(button1);
@@ -198,7 +198,7 @@ $restart.addEventListener('click', function(e) {
 
     counter--;
 
-    xhr.addEventListener('load', function () {
+    xhr.addEventListener('load', () => {
       let xhrResponse = xhr.response;
       let data = xhrResponse.results;
       let answers = [];
@@ -214,7 +214,7 @@ $restart.addEventListener('click', function(e) {
         answers = (data[i].incorrect_answers);
         answers.push(correctAnswer);
         answers.sort();
-        buttonArr.forEach(function (button) {
+        buttonArr.forEach((button) => {
           button.classList.remove('hidden');
         })
         p.classList.remove('hidden');
@@ -223,16 +223,16 @@ $restart.addEventListener('click', function(e) {
         button3.innerHTML = answers[2];
         button4.innerHTML = answers[3];
 
-        e.target.addEventListener('click', function (e) {
-          buttonArr.forEach(function (button) {
+        e.target.addEventListener('click', (e) => {
+          buttonArr.forEach((button) => {
             if (button.textContent === correctAnswer) {
               button.className = 'green';
             }
           })
         })
 
-        buttonArr.forEach(function (button) {
-          button.addEventListener("click", function (e) {
+        buttonArr.forEach((button) => {
+          button.addEventListener("click", (e) => {
             if (e.target.textContent === correctAnswer) {
               scorer++;
               e.target.className = 'green';
@@ -248,14 +248,14 @@ $restart.addEventListener('click', function(e) {
         span.className = 'score';
         span.textContent = `Score: ${scorer}`;
         p.textContent = '';
-        buttonArr.forEach(function (button) {
+        buttonArr.forEach((button) => {
           button.className = 'gray';
         })
       }
 
       if (counter < 1) {
         h1.textContent = `Welldone, ${userData.username}!`;
-        buttonArr.forEach(function (button) {
+        buttonArr.forEach((button) => {
           button.classList.add('hidden');
         })
         input3.classList.add('hidden');
