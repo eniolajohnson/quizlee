@@ -1,7 +1,7 @@
 /* exported data */
-var userData = {
+const userData = {
   username : "",
 }
 
-var userDataJSON = JSON.stringify(userData)
+const userDataJSON = JSON.stringify(userData)
 localStorage.setItem('userData', userDataJSON);
