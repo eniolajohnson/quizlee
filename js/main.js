@@ -1,12 +1,13 @@
 const $username = document.querySelector('h1');
 const $text = document.querySelector('h3');
+const $explain = document.querySelector('#explain-app');
 const $form = document.querySelector('#form');
 const $inputName = document.querySelector('#input-name');
 const $enterButton = document.querySelector('#enter-button');
 const $startButton = document.querySelector('#start-button');
 const $buttons = document.querySelectorAll('button');
 const $answerButtons = document.querySelector('.buttons');
-const $p = document.querySelector('p');
+const $p = document.querySelector('#display-correct');
 const $score = document.querySelector('span');
 const $body = document.querySelector('div');
 const $main = document.querySelector('main');
@@ -14,9 +15,11 @@ const $main = document.querySelector('main');
 const changeName = (e) => {
   if ($inputName.value <= 0) {
     $username.textContent = `We need a name to play the game...`;
+    $explain.classList.add('hidden');
   } else {
     $username.textContent = `${$inputName.value} ,`;
     $text.textContent = `ready to test your knowledge on earthly things?`;
+    $explain.classList.add('hidden');
     $inputName.classList.add('hidden');
     $enterButton.classList.add('hidden');
     $startButton.classList.remove('hidden');
@@ -25,6 +28,11 @@ const changeName = (e) => {
 }
 
 $enterButton.addEventListener('click', changeName);
+$inputName.addEventListener('keydown', (e) => {
+  if (event.keyCode == 13){
+    changeName();
+  }
+});
 
 let count = 11;
 let score = 0;
@@ -59,6 +67,7 @@ const startGame = (e) => {
       answers.sort();
       $buttons.forEach((elem) => {
         elem.classList.remove('hidden');
+        elem.disabled = false;
       })
       $p.classList.remove('hidden');
       $buttons[0].innerHTML = answers[0];
@@ -78,18 +87,35 @@ const startGame = (e) => {
           if (e.target.textContent === correctAnswer) {
             score++;
             e.target.className = 'green';
-            $p.textContent = '';
+            $score.textContent = `Score: ${score}`;
           } else if (e.target.textContent !== correctAnswer) {
             e.target.className = 'red';
-            $p.textContent = `The correct answer was: ${correctAnswer}.`;
-          } else {
-            $p.textContent = `The correct answer was: ${correctAnswer}.`;
           }
         })
       })
 
+      $buttons[0].addEventListener('click', function (e) {
+        $buttons[1].disabled = true;
+        $buttons[2].disabled = true;
+        $buttons[3].disabled = true;
+      })
+      $buttons[1].addEventListener('click', function (e) {
+        $buttons[0].disabled = true;
+        $buttons[2].disabled = true;
+        $buttons[3].disabled = true;
+      })
+      $buttons[2].addEventListener('click', function (e) {
+        $buttons[0].disabled = true;
+        $buttons[1].disabled = true;
+        $buttons[3].disabled = true;
+      })
+      $buttons[3].addEventListener('click', function (e) {
+        $buttons[0].disabled = true;
+        $buttons[1].disabled = true;
+        $buttons[2].disabled = true;
+      })
+
       $score.className = 'score';
-      $score.textContent = `Score: ${score}`;
       $p.textContent = '';
       $buttons.forEach((elem) => {
         elem.className = 'gray';
@@ -108,7 +134,7 @@ const startGame = (e) => {
       } else if (score > 4 && score < 7) {
         $text.textContent = `You've got a pretty good knowledge of Earthly things!`;
       } else if (score > 7) {
-        $text.textContent = `We are in awe of your knowledge!`;
+        $text.textContent = `Master, we are in awe of your knowledge!`;
       }
       const total = 10;
       $p.textContent = `You got ${score} of ${total} correctly.`;
@@ -124,7 +150,7 @@ let counter = 11;
 let scorer = 0;
 
 $restart.addEventListener('click', (e) => {
-  counter = 10;
+  counter = 11;
   scorer = 0;
   while ($main.firstChild) {
     $main.removeChild($main.firstChild);
@@ -216,6 +242,7 @@ $restart.addEventListener('click', (e) => {
         answers.sort();
         buttonArr.forEach((button) => {
           button.classList.remove('hidden');
+          button.disabled = false;
         })
         p.classList.remove('hidden');
         button1.innerHTML = answers[0];
@@ -237,16 +264,36 @@ $restart.addEventListener('click', (e) => {
               scorer++;
               e.target.className = 'green';
               p.textContent = '';
+              span.textContent = `Score: ${scorer}`;
             } else if (e.target.textContent !== correctAnswer) {
               e.target.className = 'red';
-              p.textContent = `The correct answer was: ${correctAnswer}.`;
             }
           })
         })
 
+        button1.addEventListener('click', function (e) {
+          button2.disabled = true;
+          button3.disabled = true;
+          button4.disabled = true;
+        })
+        button2.addEventListener('click', function (e) {
+          button1.disabled = true;
+          button3.disabled = true;
+          button4.disabled = true;
+        })
+        button3.addEventListener('click', function (e) {
+          button1.disabled = true;
+          button2.disabled = true;
+          button4.disabled = true;
+        })
+        button4.addEventListener('click', function (e) {
+          button1.disabled = true;
+          button2.disabled = true;
+          button3.disabled = true;
+        })
+
         span.classList.remove('hidden');
         span.className = 'score';
-        span.textContent = `Score: ${scorer}`;
         p.textContent = '';
         buttonArr.forEach((button) => {
           button.className = 'gray';
@@ -264,9 +311,10 @@ $restart.addEventListener('click', (e) => {
         } else if (scorer > 4 && score < 7) {
           h3.textContent = `You've got a pretty good knowledge of Earthly things!`;
         } else if (scorer > 7) {
-          h3.textContent = `We are in awe of your knowledge!`;
+          h3.textContent = `Master, we are in awe of your knowledge!`;
         }
         const total = 10;
+        span.textContent = `Score: ${scorer}`;
         p.textContent = `You got ${scorer} of ${total} correctly.`;
         span.className = 'hidden';
         $main.append($restart);
