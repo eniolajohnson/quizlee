@@ -1,7 +1,7 @@
 # Quizlee- An  AJAX Project
 
 ## Overview
-Quizlee is a dynamic HTML, CSS, and JavaScript solo, ajax, quiz project, ideal for taking a break from work.
+Quizlee is a dynamic HTML, CSS, and JavaScript solo, ajax, multi-choice quiz project, ideal for when you need to take a break from work.
 
 ## Feature Lists
 ```
@@ -43,6 +43,3 @@ Some new events and how they can be used using addeventlisteners
 
 ## Live Site
 The live version of the app can be viewed [here](https://eniolajohnson.github.io/quizlee/).
-
-
-## App Preview
