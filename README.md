@@ -42,4 +42,4 @@ Some new events and how they can be used using addeventlisteners
 
 
 ## Live Site
-The live version of the app can be viewed [here](https://eniolajohnson.github.io/quizlee/).
+The live version of the app can be viewed [here](https://eniolajohnson.github.io/quizlee/)
